@@ -18,8 +18,7 @@ main {
     align-items: center;
 }
 
-section,
-#newthing {
+section {
     margin: 25px;
     padding: 20px 10px;
     background: var(--background);
@@ -38,7 +37,6 @@ h1 {
 }
 
 section {
-    width: 10%;
     transition: transform 0.3s, z-index 0s, box-shadow 0.3s;
     z-index: 1;
 }
@@ -49,14 +47,31 @@ section:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-#button {
-    text-align: center;
-}
-
-#add-thing,
-#button-add {
+button {
    height: 50px;
    width: 100px;
+}
+
+.thing-details ul {
+    list-style-type: none; 
+    padding-left: 0; 
+}
+
+.thing-details li {
+    margin: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 /* Typography */
@@ -88,13 +103,15 @@ li {
 
 @media only screen and (min-width: 900px) {
 
-    #things-div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    @media (max-width: 768px) {
+        .thing-list section {
+            width: calc(50% - 20px);
+        }
     }
-
-    section {
-        flex: 50%;
+    
+    @media (max-width: 480px) {
+        .thing-list section {
+            width: 100%;
+        }
     }
 }

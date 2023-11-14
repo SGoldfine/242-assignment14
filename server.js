@@ -10,7 +10,7 @@ app.use(cors());
 const upload = multer({dest: __dirname + "/public/images" })
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 
@@ -44,7 +44,8 @@ let things = [{
         _id: 3,
         name: "Chair",
         description: "A chair is a seat designed for one person, typically consisting of 4 legs and a back-rest",
-        inventionDate: "Invention Date: 3100 BC, Modern Chair: 1925",        inventor: "Inventor: Marcel Breuer",
+        inventionDate: "Invention Date: 3100 BC, Modern Chair: 1925",        
+        inventor: "Inventor: Marcel Breuer",
         funFacts: [
             "Chairs have been around for thousands of years",
             "In Egyptian times, the master of the household was the only one with a chair",
@@ -130,6 +131,6 @@ const validateThings = (thing) => {
     return schema.validate(thing);
 }
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log("listening");
 });
