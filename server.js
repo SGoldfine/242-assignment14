@@ -98,7 +98,7 @@ app.get("/api/things", (req, res) => {
     res.send(things);
 })
 
-app.post("/api/things", upload.single("img"), (req,res) => {
+app.post("/api/things", upload.single("cover"), (req,res) => {
     const result = validateThings(req.body);
 
     if(result.error) {
@@ -106,13 +106,15 @@ app.post("/api/things", upload.single("img"), (req,res) => {
         return;
     }
 
+    const newId = things.length > 0 ? things[things.length - 1]._id + 1: 1;
     const thing = {
-        _id: things.length + 1,
+        _id: newId,
         name: req.body.name,
         description: req.body.description,
         inventionDate: req.body.inventionDate,
         inventor: req.body.inventor,
-        funFacts: req.body.funFacts.split(",")
+        funFacts: Array.isArray(req.body.funFacts) ? req.body.funFacts : req.body.funFacts.split(",")
+
     }
 
     things.push(thing);

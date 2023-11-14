@@ -40,13 +40,14 @@ function toggleAddThingForm() {
 async function handleFormSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
+  const funFacts = formData.get('funFacts').split(',').map(fact => fact.trim());
 
   const newThing = {
       name: formData.get('name'),
       inventor: formData.get('inventor'),
       inventionDate: formData.get('inventionDate'),
       description: formData.get('description'),
-      funFacts: formData.get('funFacts'),
+      funFacts: funFacts,
   };
 
   try {
